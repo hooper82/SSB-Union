@@ -62,6 +62,7 @@ BloodForParadise = "Blood for Paradise"
 ToxicSands = "Toxic Sands"
 EagleSprings = "Eagle Springs"
 LlanosMestanas = "Llanos Mestanas"
+LegionOfMonsters = "Legion of monsters: the last king"
 
 
 # Crossover/alt timeline story names
@@ -100,6 +101,7 @@ G.add_node(Astray)
 G.add_node(BloodForParadise)
 G.add_node(ToxicSands)
 G.add_node(EagleSprings)
+G.add_node(LegionOfMonsters)
 
 # All of the references, attempted to kinda group them by story
 G.add_edge(SemperShil, FarAway)
@@ -176,6 +178,8 @@ G.add_edge(SemperShil, ChaosAndMayhem)
 
 G.add_edge(ClawsOfFate, FireWithin)
 
+G.add_edge(LegionOfMonsters, ChaosAndMayhem)
+
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:
@@ -193,7 +197,7 @@ axis = plt.gca()
 
 # A bit of spacing around the edge so labels won't overflow
 # Current settings give the current amount of stories a circular shape
-axis.set_xlim([1.7 * x for x in axis.get_xlim()])
+axis.set_xlim([1.8 * x for x in axis.get_xlim()])
 axis.set_ylim([1.2 * y for y in axis.get_ylim()])
 # plt.tight_layout() - commented out, just throws a warning
 plt.show()

@@ -111,6 +111,7 @@ G.add_node(EagleSprings)
 G.add_node(LegionOfMonsters)
 G.add_node(Marauder)
 G.add_node(GameBoi)
+G.add_node(Anonymous)
 
 
 # All of the references, attempted to kinda group them by story
@@ -201,6 +202,10 @@ G.add_edge(ChaosAndMayhem, HumanMusic)
 G.add_edge(ChaosAndMayhem, DependentSpouse)
 
 G.add_edge(AlienNation, Marauder)
+
+G.add_edge(Anonymous, ChaosAndMayhem)
+G.add_edge(Anonymous, AlienNation)
+
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:

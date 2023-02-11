@@ -210,7 +210,7 @@ for node in G:
         color_map.append('#1f76b4')  # Else stay blue
 
 # Bump up figure size if text starts overlapping (width, height)
-plt.figure(3, figsize=(24, 24))
+plt.figure(3, figsize=(14, 24))
 # Add labels and the color map
 nx.draw_shell(G, with_labels=True, node_color=color_map)
 plt.axis('off')
@@ -218,7 +218,7 @@ axis = plt.gca()
 
 # A bit of spacing around the edge so labels won't overflow
 # Current settings give the current amount of stories a circular shape
-axis.set_xlim([2 * x for x in axis.get_xlim()])
+axis.set_xlim([1.2 * x for x in axis.get_xlim()])
 axis.set_ylim([1 * y for y in axis.get_ylim()])
 # plt.tight_layout() - commented out, just throws a warning
 plt.show()

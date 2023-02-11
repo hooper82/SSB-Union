@@ -206,6 +206,9 @@ G.add_edge(AlienNation, Marauder)
 G.add_edge(Anonymous, ChaosAndMayhem)
 G.add_edge(Anonymous, AlienNation)
 
+G.add_edge(CryptidChronicle, DeniedOps)
+G.add_edge(CryptidChronicle, ChaosAndMayhem)
+
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:

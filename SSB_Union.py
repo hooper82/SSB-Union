@@ -21,7 +21,7 @@ BlueBlood = "The Blue Blood"
 GoingNative = "Going Native"
 StreetFighter = "Streetfighter"
 FarAway = "Far Away"
-Loyalist = "Loyalist"
+Loyalist = "Loyalist/Growing Up Alien"
 PianoMan = "The Piano Man"
 Lifeguards = "Lifeguards and Amazons"
 CulturalExchange = "Cultural Exchange"
@@ -62,7 +62,14 @@ BloodForParadise = "Blood for Paradise"
 ToxicSands = "Toxic Sands"
 EagleSprings = "Eagle Springs"
 LlanosMestanas = "Llanos Mestanas"
-LegionOfMonsters = "Legion of monsters: the last king"
+LegionOfMonsters = "Legion of Monsters"
+FallingUpward = "Falling Upward"
+GameBoi = "Game Boi"
+CryptidChronicle = "The Cryptid Chronicle"
+ContractedHuman = "Contracted Human"
+Marshal = "Marshal"
+Anonymous = "Anonymous"
+Candyman = "Candyman"
 
 
 # Crossover/alt timeline story names
@@ -102,6 +109,9 @@ G.add_node(BloodForParadise)
 G.add_node(ToxicSands)
 G.add_node(EagleSprings)
 G.add_node(LegionOfMonsters)
+G.add_node(Marauder)
+G.add_node(GameBoi)
+
 
 # All of the references, attempted to kinda group them by story
 G.add_edge(SemperShil, FarAway)
@@ -180,6 +190,17 @@ G.add_edge(ClawsOfFate, FireWithin)
 
 G.add_edge(LegionOfMonsters, ChaosAndMayhem)
 
+G.add_edge(FarAway, Marauder)
+G.add_edge(FarAway, ChaosAndMayhem)
+G.add_edge(FarAway, TopLasgun)
+
+G.add_edge(EagleSprings, GameBoi)
+
+G.add_edge(ChaosAndMayhem, JustOneDrop)
+G.add_edge(ChaosAndMayhem, HumanMusic)
+G.add_edge(ChaosAndMayhem, DependentSpouse)
+
+G.add_edge(AlienNation, Marauder)
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:
@@ -189,7 +210,7 @@ for node in G:
         color_map.append('#1f76b4')  # Else stay blue
 
 # Bump up figure size if text starts overlapping (width, height)
-plt.figure(3, figsize=(16, 16))
+plt.figure(3, figsize=(24, 24))
 # Add labels and the color map
 nx.draw_shell(G, with_labels=True, node_color=color_map)
 plt.axis('off')
@@ -197,8 +218,8 @@ axis = plt.gca()
 
 # A bit of spacing around the edge so labels won't overflow
 # Current settings give the current amount of stories a circular shape
-axis.set_xlim([1.8 * x for x in axis.get_xlim()])
-axis.set_ylim([1.2 * y for y in axis.get_ylim()])
+axis.set_xlim([2 * x for x in axis.get_xlim()])
+axis.set_ylim([1 * y for y in axis.get_ylim()])
 # plt.tight_layout() - commented out, just throws a warning
 plt.show()
 
@@ -233,4 +254,4 @@ axis = plt.gca()
 axis.set_xlim([1.7 * x for x in axis.get_xlim()])
 axis.set_ylim([1.2 * y for y in axis.get_ylim()])
 # plt.tight_layout() - commented out, just throws a warning
-plt.show()
+#plt.show()

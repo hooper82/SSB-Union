@@ -210,6 +210,7 @@ G.add_edge(CryptidChronicle, DeniedOps)
 G.add_edge(CryptidChronicle, ChaosAndMayhem)
 
 G.add_edge(HumanMusic, BlueBlood)
+G.add_edge(HumanMusic, AlienNation)
 
 # Create a colormap for recoloring nodes
 color_map = []

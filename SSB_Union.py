@@ -70,6 +70,7 @@ ContractedHuman = "Contracted Human"
 Marshal = "Marshal"
 Anonymous = "Anonymous"
 Candyman = "Candyman"
+Outcasts = "The Outcasts"
 
 
 # Crossover/alt timeline story names
@@ -112,6 +113,8 @@ G.add_node(LegionOfMonsters)
 G.add_node(Marauder)
 G.add_node(GameBoi)
 G.add_node(Anonymous)
+G.add_node(Outcasts)
+G.add_node(Candyman)
 
 
 # All of the references, attempted to kinda group them by story
@@ -212,6 +215,9 @@ G.add_edge(CryptidChronicle, ChaosAndMayhem)
 G.add_edge(HumanMusic, BlueBlood)
 G.add_edge(HumanMusic, AlienNation)
 
+G.add_edge(Outcasts, FarAway)
+G.add_edge(Outcasts, Candyman)
+
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:
@@ -223,7 +229,8 @@ for node in G:
 # Bump up figure size if text starts overlapping (width, height)
 plt.figure(3, figsize=(14, 24))
 # Add labels and the color map
-nx.draw_shell(G, with_labels=True, node_color=color_map)
+#nx.draw_networkx_labels(G, pos=nx.spring_layout(G), font_size=8)
+nx.draw_shell(G, with_labels=True, node_color=color_map, font_size=10)
 plt.axis('off')
 axis = plt.gca()
 
@@ -256,6 +263,7 @@ for node in G:
 # Bump up figure size if text starts overlapping (width, height)
 plt.figure(3, figsize=(16, 16))
 # Add labels and the color map
+G.font_size = 22
 nx.draw_shell(G, with_labels=True, node_color=color_map)
 plt.axis('off')
 axis = plt.gca()

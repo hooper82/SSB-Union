@@ -71,6 +71,9 @@ Marshal = "Marshal"
 Anonymous = "Anonymous"
 Candyman = "Candyman"
 Outcasts = "The Outcasts"
+StoneMountain = "Stonemountain"
+SuperiorAndSubordinate = "The Subordinate and the Superior"
+BeingAMan = "Being a Man"
 
 
 # Crossover/alt timeline story names
@@ -115,6 +118,10 @@ G.add_node(GameBoi)
 G.add_node(Anonymous)
 G.add_node(Outcasts)
 G.add_node(Candyman)
+G.add_node(StoneMountain)
+G.add_node(HuntingMaus)
+G.add_node(BeingAMan)
+G.add_node(SuperiorAndSubordinate)
 
 
 # All of the references, attempted to kinda group them by story
@@ -217,6 +224,14 @@ G.add_edge(HumanMusic, AlienNation)
 
 G.add_edge(Outcasts, FarAway)
 G.add_edge(Outcasts, Candyman)
+
+G.add_edge(EagleSprings, HuntingMaus)
+G.add_edge(StoneMountain, DeniedOps)
+G.add_edge(StoneMountain, ChaosAndMayhem)
+
+G.add_edge(HuntingMaus, BeingAMan)
+G.add_edge(HuntingMaus, SuperiorAndSubordinate)
+G.add_edge(BeingAMan, SuperiorAndSubordinate)
 
 # Create a colormap for recoloring nodes
 color_map = []

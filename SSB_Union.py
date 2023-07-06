@@ -74,6 +74,12 @@ Outcasts = "The Outcasts"
 StoneMountain = "Stonemountain"
 SuperiorAndSubordinate = "The Subordinate and the Superior"
 BeingAMan = "Being a Man"
+UnfortunateChance = "Unfortunate Chance"
+ConvenientNarrative = "Convenient Narrative"
+ColdFront = "Cold Front"
+JanissaryJoyRide = "Janissary: The Joy Ride"
+SemperImperialis = "Semper Imperialis"
+LockedUpInLowOrbit = "Locked Up In Low Orbit"
 
 
 # Crossover/alt timeline story names
@@ -122,6 +128,9 @@ G.add_node(StoneMountain)
 G.add_node(HuntingMaus)
 G.add_node(BeingAMan)
 G.add_node(SuperiorAndSubordinate)
+G.add_node(JanissaryJoyRide)
+
+
 
 
 # All of the references, attempted to kinda group them by story
@@ -232,6 +241,16 @@ G.add_edge(StoneMountain, ChaosAndMayhem)
 G.add_edge(HuntingMaus, BeingAMan)
 G.add_edge(HuntingMaus, SuperiorAndSubordinate)
 G.add_edge(BeingAMan, SuperiorAndSubordinate)
+
+G.add_edge(TheCook, CitySlickers)
+
+G.add_edge(Candyman, InForPenny)
+G.add_edge(Candyman, Outcasts)
+
+G.add_edge(JanissaryJoyRide, ChaosAndMayhem)
+G.add_edge(JanissaryJoyRide, DeniedOps)
+G.add_edge(JanissaryJoyRide, GoingNative)
+G.add_edge(JanissaryJoyRide, JustOneDrop)
 
 # Create a colormap for recoloring nodes
 color_map = []

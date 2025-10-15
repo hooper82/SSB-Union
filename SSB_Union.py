@@ -263,7 +263,7 @@ G.add_edge(EagleSprings, ChaosAndMayhem)
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:
-    if node == "insert name variable here" or node == "or here":
+    if node == "condition placeholder":
         color_map.append('#1f76b4')  # Switch story colors if listed in if
     else:
         color_map.append('#1f76b4')  # Else stay blue
@@ -296,7 +296,7 @@ axis.set_ylim([1 * y for y in axis.get_ylim()])
 # plt.tight_layout() - commented out, just throws a warning
 plt.show()
 
-
+# Universe crossover map
 # TODO: Get the universe crossover/alt timeline version up-to-date
 
 # Alt version nodes
@@ -310,7 +310,7 @@ G.add_edge(FireteamProvidence, EagleSprings)
 # (at least yet, I might when I add more colored nodes)
 color_map = []
 for node in G:
-    if node == FireteamProvidence or node == "or here":
+    if node == FireteamProvidence:
         color_map.append('#eb0000')  # Switch story colors if listed in if
     else:
         color_map.append('#1f76b4')  # Else stay blue
@@ -328,4 +328,6 @@ axis = plt.gca()
 axis.set_xlim([1.7 * x for x in axis.get_xlim()])
 axis.set_ylim([1.2 * y for y in axis.get_ylim()])
 # plt.tight_layout() - commented out, just throws a warning
+
+# Uncomment to also generate the crossover image
 #plt.show()

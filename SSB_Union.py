@@ -6,10 +6,10 @@ G = nx.Graph()
 # Story Names
 HumanMusic = "We Play Human Music"
 CatGone = "A Cat That Really Was Gone"
-Duelist = "The Duelist in Purple Armor"
-Horok = "The Adventures of Horok Ra"
+Duelist = "The Duelist in \nPurple Armor"
+Horok = "The Adventures \nof Horok Ra"
 CitySlickers = "City Slickers and Hayseeds"
-DeniedOps = "Denied Operations"
+DeniedOps = "Denied \nOperations"
 SemperShil = "Semper Shil'vati"
 ChaosAndMayhem = "Chaos and Mayhem"
 DependentSpouse = "Dependent Spouse"
@@ -252,6 +252,14 @@ G.add_edge(JanissaryJoyRide, DeniedOps)
 G.add_edge(JanissaryJoyRide, GoingNative)
 G.add_edge(JanissaryJoyRide, JustOneDrop)
 
+G.add_edge(CryptidChronicle, ChaosAndMayhem)
+
+G.add_edge(StoneMountain, JustOneDrop)
+G.add_edge(StoneMountain, DeniedOps)
+G.add_edge(StoneMountain, TopLasgun)
+
+G.add_edge(EagleSprings, ChaosAndMayhem)
+
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:
@@ -259,11 +267,24 @@ for node in G:
         color_map.append('#1f76b4')  # Switch story colors if listed in if
     else:
         color_map.append('#1f76b4')  # Else stay blue
+        
+## Comment from 2025: I can't recall if the next 10 lines even do anything but it was uncommitted
+# Compute the positions of nodes for the shell layout
+shell_layout = nx.shell_layout(G, nlist=[range(5)])
+
+# Adjust the spacing between nodes
+scaling_factor = 5  # Increase this value to increase spacing
+spacing = 1  # Adjust this value to control the spacing between nodes
+for node in shell_layout:
+    shell_layout[node] = [(coord * scaling_factor) + (spacing * node) for coord in shell_layout[node]]
+
+node_labels = {node: 'Long Label for Node {}'.format(node) for node in G.nodes}
+## End of comment from 2025
 
 # Bump up figure size if text starts overlapping (width, height)
 plt.figure(3, figsize=(14, 24))
+
 # Add labels and the color map
-#nx.draw_networkx_labels(G, pos=nx.spring_layout(G), font_size=8)
 nx.draw_shell(G, with_labels=True, node_color=color_map, font_size=10)
 plt.axis('off')
 axis = plt.gca()

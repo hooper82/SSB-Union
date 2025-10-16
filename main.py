@@ -2,20 +2,29 @@ import logging
 import yaml
 import os
 
-import StoryCatalog
+from StoryCatalog import StoryCatalog
+from StoryNetwork import StoryNetwork
 
-
+logging.basicConfig(
+    format='%(asctime)s %(module)s.%(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S',
+)
 
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
-    import pprint
+    story_catalog = StoryCatalog()
+    story_network = StoryNetwork()
 
-    story_catalog = StoryCatalog.StoryCatalog()
     story_catalog.load_all_stories()
 
-    for story in story_catalog.list_stories():
-        pprint.pprint(story)
-        print()
+    for story_id in story_catalog.get_all_story_ids():
+        story_network.add_node(story_id)
+
+    for source_id, target_id in story_catalog.get_all_story_connections():
+        story_network.add_edge(source_id, target_id)
+
+
 

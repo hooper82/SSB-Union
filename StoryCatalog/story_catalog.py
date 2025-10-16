@@ -11,7 +11,7 @@ class StoryCatalog:
     def _load_story_file(self, filename: str) -> dict:
         with open(filename, 'r') as file:
             story_data = yaml.safe_load(file)
-            logging.info(f"Loaded story: {story_data.get('name', 'Unknown')} from {filename}")
+            logging.debug(f"Loaded story: {story_data.get('name', 'Unknown')} from {filename}")
             return story_data
 
     def _find_story_files(self):
@@ -38,3 +38,10 @@ class StoryCatalog:
     def list_stories(self):
         return list(self.stories.values())
     
+    def get_all_story_ids(self):
+        return list(self.stories.keys())
+    
+    def get_all_story_connections(self):
+        for story in self.stories.values():
+            for connection in story.get('connections', []):
+                yield (story['id'], connection)

@@ -1,0 +1,10 @@
+id: stone_mountain
+name: Stonemountain
+link: ''
+author: ''
+connections:
+- denied_ops
+- chaos_and_mayhem
+- just_one_drop
+- denied_ops
+- top_lasgun

@@ -1,12 +1,7 @@
-id: blackzone
-name: Blackzone
+id: far_away
+name: Far Away
 link: https://www.reddit.com/r/Sexyspacebabes/comments/xhzv39/blackzone_part_1part_2part_3/
 author: u/RobotStatic
 connections:
-- top_lasgun
-- eagle_springs
-- denied_ops
-- chaos_and_mayhem
-- marauder
-- top_lasgun
-- blackzone
+- far_away
+- human_condition

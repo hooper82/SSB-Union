@@ -1,9 +1,13 @@
 import logging
-import yaml
-import os
+import argparse
 
 from StoryCatalog import StoryCatalog
 from StoryNetwork import StoryNetwork
+
+import gravis as gv
+
+
+NODE_SCALE_FACTOR = 200
 
 logging.basicConfig(
     format='%(asctime)s %(module)s.%(levelname)-8s %(message)s',
@@ -13,18 +17,48 @@ logging.basicConfig(
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", default='graph.html', type=str, help="Output graph HTML file name")
+    args = parser.parse_args()
+
     logging.basicConfig(level=logging.INFO)
 
     story_catalog = StoryCatalog()
     story_network = StoryNetwork()
 
     story_catalog.load_all_stories()
+    story_network.add_all_stories(story_catalog)
 
-    for story_id in story_catalog.get_all_story_ids():
-        story_network.add_node(story_id)
+    G = story_network.get_graph()
 
-    for source_id, target_id in story_catalog.get_all_story_connections():
-        story_network.add_edge(source_id, target_id)
+    # Gravis
+    fig = gv.d3(
+        G,
+
+        show_details=True,
+        show_details_toggle_button=False,
+
+        node_hover_neighborhood=True,
+        node_label_data_source='name',
+
+        graph_height=1400,
+
+        node_size_factor=1,
+        use_node_size_normalization=True,
+        node_size_normalization_min=10,
+        node_size_normalization_max=100,
 
 
+        # edge_size_data_source='weight',
+        edge_curvature=0.3,
 
+        use_collision_force=True,
+        collision_force_radius=70,
+        collision_force_strength=0.2,
+
+        use_x_positioning_force=True,
+        x_positioning_force_strength=0.1,
+        use_y_positioning_force=True,
+        y_positioning_force_strength=0.1,
+    )
+    fig.export_html(args.output, overwrite=True)

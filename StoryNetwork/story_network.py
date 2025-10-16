@@ -20,3 +20,6 @@ class StoryNetwork:
 
     def get_graph(self):
         return self.G
+
+    def add_node_attributes(self, all_attributes):
+        nx.set_node_attributes(self.G, all_attributes)

@@ -48,3 +48,11 @@ class StoryCatalog:
                     logging.warning(f"Story {story['id']} has a connection to unknown story ID: {connection}")
                     continue
                 yield (story['id'], connection)
+
+    def get_story_name_mapping(self, nodes):
+        r = {}
+        for node in nodes:
+            r[node] = self.stories[node]['name']
+        return r
+
+        # return {story_id: story['name'] for story_id, story in self.stories.items()}

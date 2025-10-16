@@ -44,4 +44,7 @@ class StoryCatalog:
     def get_all_story_connections(self):
         for story in self.stories.values():
             for connection in story.get('connections', []):
+                if connection not in self.stories.keys():
+                    logging.warning(f"Story {story['id']} has a connection to unknown story ID: {connection}")
+                    continue
                 yield (story['id'], connection)

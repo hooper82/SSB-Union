@@ -1,0 +1,7 @@
+id: candyman
+name: Candyman
+link: ''
+author: ''
+connections:
+- in_for_penny
+- outcasts

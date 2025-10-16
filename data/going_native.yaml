@@ -1,0 +1,7 @@
+id: going_native
+name: Going Native
+link: ''
+author: ''
+connections:
+- in_for_penny
+- top_lasgun

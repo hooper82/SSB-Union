@@ -1,0 +1,12 @@
+id: far_away
+name: Far Away
+link: ''
+author: ''
+connections:
+- top_lasgun
+- eagle_springs
+- denied_ops
+- chaos_and_mayhem
+- marauder
+- chaos_and_mayhem
+- top_lasgun

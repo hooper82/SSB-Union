@@ -1,0 +1,7 @@
+id: hunting_maus
+name: Hunting a Maus
+link: ''
+author: ''
+connections:
+- being_a_man
+- superior_and_subordinate

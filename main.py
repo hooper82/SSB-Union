@@ -35,10 +35,13 @@ if __name__ == "__main__":
     fig = gv.d3(
         G,
 
+        show_details=True,
+        show_details_toggle_button=False,
+
         node_hover_neighborhood=True,
         node_label_data_source='name',
 
-        graph_height=1200,
+        graph_height=1400,
 
         node_size_factor=1,
         use_node_size_normalization=True,

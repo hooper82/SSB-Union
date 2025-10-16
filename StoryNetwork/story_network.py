@@ -47,12 +47,23 @@ class StoryNetwork:
             node = self.G.nodes[node_id]
             story = story_catalog.get_story(node_id)
             if story:
-                node['name'] = story.get('name', 'Unknown')
-                node['author'] = story.get('author', 'Unknown')
-                node['link'] = story.get('link', 'Unknown')
-                edge_count = len(list(self.G.in_edges(node_id))) + len(list(self.G.out_edges(node_id)))
+                title = story.get('name', 'Unknown')
+                author = story.get('author', 'Unknown')
+                link = story.get('link', 'Unknown')
+                active = story.get('active', 'Unknown')
 
-                node['node_click'] = f"test words"
+                node['name'] = title
+                node_description = f"Title: <strong>{title}</strong>"
+                
+                node['author'] = author
+                node_description += f"\nAuthor: <strong>{author}</strong>"
+                node_description += f"\nActive: {active}"
+
+                node['link'] = link
+                node_description += f"\n<a href='{link}'>Link to Story</a>"
+                node['click'] = node_description
+
+                edge_count = len(list(self.G.in_edges(node_id))) + len(list(self.G.out_edges(node_id)))
                 node['size'] = edge_count * NODE_SCALE_FACTOR
 
                 logging.debug(f"Node {node_id}: {node['name']} by {node['author']} ({node.get('year', 'Unknown')}) with {edge_count} connections")

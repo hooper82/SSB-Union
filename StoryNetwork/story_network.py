@@ -3,6 +3,42 @@ import logging
 
 NODE_SCALE_FACTOR = 10
 
+COLOR_HIATUS = "#808080"
+COLOR_ONGOING = "#009600"
+COLOR_COMPLETED = "#000096"
+COLOR_UNKNOWN = "#0a0a0a"
+
+
+def _parse_link(link):
+    if link.startswith('http'):
+        return f"\n<a href='{link}'>Read Me!</a>"
+    return str()
+
+def _parse_color(status):
+    status = status.lower()
+    if status == 'hiatus':
+        return COLOR_HIATUS
+    elif status == 'ongoing':
+        return COLOR_ONGOING
+    elif status == 'completed':
+        return COLOR_COMPLETED
+    else:
+        return COLOR_UNKNOWN
+
+def create_node_description(story):
+    title = story.get('name', 'Unknown')
+    author = story.get('author', 'Unknown')
+    link = story.get('link', None)
+    active = story.get('status', 'Unknown')
+
+    description = f"Title: <strong>{title}</strong>"
+    description += f"\nAuthor: <strong>{author}</strong>"
+    description += f"\nActive: {active}"
+    description += _parse_link(link)
+
+    return description
+
+
 class StoryNetwork:
     def __init__(self):
         self.G = nx.DiGraph()
@@ -47,24 +83,16 @@ class StoryNetwork:
             node = self.G.nodes[node_id]
             story = story_catalog.get_story(node_id)
             if story:
-                title = story.get('name', 'Unknown')
-                author = story.get('author', 'Unknown')
-                link = story.get('link', 'Unknown')
-                active = story.get('active', 'Unknown')
+                node['name'] = story.get('name', 'Unknown')
+                node['author'] = story.get('author', 'Unknown')
 
-                node['name'] = title
-                node_description = f"Title: <strong>{title}</strong>"
-                
-                node['author'] = author
-                node_description += f"\nAuthor: <strong>{author}</strong>"
-                node_description += f"\nActive: {active}"
-
-                node['link'] = link
-                node_description += f"\n<a href='{link}'>Link to Story</a>"
-                node['click'] = node_description
+                node['click'] = create_node_description(story)
 
                 edge_count = len(list(self.G.in_edges(node_id))) + len(list(self.G.out_edges(node_id)))
                 node['size'] = edge_count * NODE_SCALE_FACTOR
+
+                node['border_size'] = 0
+                node['color'] = _parse_color(story.get('status', 'Unknown'))
 
                 logging.debug(f"Node {node_id}: {node['name']} by {node['author']} ({node.get('year', 'Unknown')}) with {edge_count} connections")
             else:

@@ -1,0 +1,7 @@
+id: fire_within
+name: Fire Within
+link: ''
+author: ''
+connections:
+- street_fighter
+- going_native

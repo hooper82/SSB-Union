@@ -1,0 +1,9 @@
+id: janissary_joy_ride
+name: 'Janissary: The Joy Ride'
+link: ''
+author: ''
+connections:
+- chaos_and_mayhem
+- denied_ops
+- going_native
+- just_one_drop

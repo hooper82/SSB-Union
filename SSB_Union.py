@@ -260,6 +260,8 @@ G.add_edge(StoneMountain, TopLasgun)
 
 G.add_edge(EagleSprings, ChaosAndMayhem)
 
+print("NODE COUNT: ", G.number_of_nodes())
+
 # Create a colormap for recoloring nodes
 color_map = []
 for node in G:
